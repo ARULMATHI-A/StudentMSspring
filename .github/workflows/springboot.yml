@@ -1,4 +1,4 @@
-name: SpringBoot
+name: SpringBoot CI
 
 on:
   push:
@@ -8,20 +8,40 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+
+    env:
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/sms
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Mysql123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_DATABASE: sms
+          MYSQL_ROOT_PASSWORD: Mysql123
+        ports:
+          - 3307:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
 
     steps:
-      - name: Checkout source
+      - name: Checkout Code
         uses: actions/checkout@v3
-        
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
-          
+
       - name: Build with Maven
-        run: mvn clean install
+        run: mvn clean install -DskipTests
 
       - name: Run Tests
         run: mvn test
