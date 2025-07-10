@@ -1,0 +1,396 @@
+/*
+body {
+
+    font-family: Arial, sans-serif;
+    background-color: #c4bff2;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+   color: #2d2d2d;
+   text-align: center;
+   margin: 20px 0;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    background-color:  #6c63ff;
+    color: white;
+    text-transform: uppercase;
+}
+
+tr:hover {
+    background-color:  #d8d8d8;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:  #6c63ff;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #ffdd57;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-form input[type="text"] {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.search-form button {
+    padding: 6px 12px;
+    border: none;
+    background-color: #0056b3;
+    color: white;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+    background-color: #003f7f;
+}
+
+@media (max-width: 600px) {
+    table {
+        width: 100%;
+    }
+ 
+	.navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+.navbar a {
+        margin: 5px 0;
+    }
+
+    .search-form {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .search-form input[type="text"] {
+        flex: 1;
+        width: 70%;
+    }
+
+    .search-form button {
+        width: 30%;
+    }
+}
+*/
+
+@charset "UTF-8";
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color:#e4dbfa;
+}
+
+/* Topbar styles */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: rgb(185, 160, 241);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Logo styles */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+.logo .icon {
+  font-size: 28px;
+  margin-right: 8px;
+}
+
+.logo .highlight {
+  color:rgb(128, 0, 64);
+}
+
+/* Navigation links */
+.nav-links a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: rgb(128, 0, 128);
+}
+
+/* Auth buttons */
+
+.auth-buttons form {
+  display: inline-block;
+}
+
+.auth-buttons input[type="submit"] {
+  padding: 8px 16px;
+  margin-left: 15px;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.auth-buttons .signin {
+  background-color: white;
+  color: rgb(128, 0, 128);
+  border: 1px solid rgb(128, 0, 128);
+}
+
+.auth-buttons .signin:hover {
+  background-color: rgb(243, 224, 255);
+}
+
+.auth-buttons .signup {
+  background-color: rgb(128, 0, 128);
+  color: white;
+}
+
+.auth-buttons .signup:hover {
+  background-color: rgb(166, 0, 166);
+}
+
+
+.course-section {
+  padding: 40px;
+  background-color: #ffffff;
+}
+
+.course-section h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.course-section .highlight {
+  color: rgb(132, 0, 132);
+}
+
+.course-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.course-filters button {
+  padding: 10px 20px;
+  border: none;
+  background-color: rgb(231, 193, 255);
+  color: #333;
+  font-weight: 500;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.course-filters button:hover {
+  background-color: rgb(129, 3, 165);
+  color: #fff;
+}
+
+/* === Course Cards === */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.course-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+}
+
+.course-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.course-info {
+  padding: 16px;
+}
+
+.course-info .instructor {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.course-info .tag {
+  background-color: rgb(245, 217, 255);
+  color:rgb(129, 3, 165);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.course-info h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.course-info .meta {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.course-info .price {
+  font-weight: bold;
+  color:rgb(129, 3, 165);
+  font-size: 15px;
+}
+
+.course-info del {
+  color: #999;
+  font-weight: normal;
+  margin-left: 8px;
+}
+
+.course-info .rating {
+  float: right;
+  color: #f9b500;
+  font-size: 14px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#e7c1ff;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  position: relative;
+}
+
+.logo .brand {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo .highlight {
+  color: #f39c12;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #400040;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hamburger {
+  font-size: 26px;
+  color: #400040;
+  cursor: pointer;
+  padding-left: 1rem;
+}
+
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 65px;
+  right: 25px;
+  background-color: white;
+  border: 1px solid #ccc;
+  min-width: 180px;
+  padding: 10px;
+  z-index: 999;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+
+.dropdown-content a,
+.dropdown-content form {
+  margin: 8px 0;
+}
+
+.dropdown-content a,
+.dropdown-content button {
+  color: #2c3e50;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+}
+
+.dropdown-content .delete-btn {
+  color: red;
+}
+s
