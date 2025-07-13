@@ -14,3 +14,4 @@ EXPOSE 8093
 # Run the jar file
 ENTRYPOINT ["java", "-jar", "app.war"]
 
+
