@@ -24,17 +24,17 @@ public class StudentController {
 
     @GetMapping("/")
     public String home() {
-        return "pages/signup"; // assuming you have login.jsp
+        return "signup"; // assuming you have login.jsp
     }
 
     @GetMapping("/form")
     public String showForm() {
-        return "pages/signup";
+        return "signup";
     }
 
     @GetMapping("/loginform")
     public String showLoginForm() {
-        return "pages/login";
+        return "login";
     }
 
     @PostMapping("/login")
@@ -46,27 +46,27 @@ public class StudentController {
         Student user = repo.findByUsername(username);
         if (user == null) {
             model.addAttribute("error", "Username does not exist");
-            return "pages/login";
+            return "login";
         }
 
         if (!user.getPasswd().equals(passwd)) {
             model.addAttribute("error", "Invalid password");
-            return "pages/login";
+            return "login";
         }
 
         session.setAttribute("loggedInUser", user);
-        return "redirect:pages/students/dashboard";
+        return "redirect:students/dashboard";
     }
 
     @GetMapping("/dashboard")
     public String showDashboard(HttpSession session, Model model) {
         Student loggedInUser = (Student) session.getAttribute("loggedInUser");
         if (loggedInUser == null) {
-            return "redirect:pages/students/loginform";
+            return "redirect:students/loginform";
         }
 
         model.addAttribute("username", loggedInUser.getUsername());
-        return "pages/dashboard";
+        return "dashboard";
     }
 
     @PostMapping("/signup")
@@ -75,11 +75,11 @@ public class StudentController {
 
         if (existingUser != null) {
             model.addAttribute("error", "Username already exists!");
-            return "pages/signup";
+            return "signup";
         }
 
         repo.save(stud);
-        return "pages/login";
+        return "login";
     }
 
     @GetMapping("/studentForm")
